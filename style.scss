@@ -1,0 +1,272 @@
+//VARIABLES
+
+$main-font-face: 'Lato', sans-serif;
+$header-font-face: 'Satisfy', cursive;
+
+$main-yellow: #F7CA18;
+$mid-yellow: #F5D76E;
+$light-yellow: #F7EECA;
+$orange: #D35400;
+$red: #96281B;
+
+
+$section-height: 100vh;
+$tablet-screen: 1150px;
+$smartphone-screen: 630px;
+
+
+
+//MIXINS
+
+@mixin section-position ($height) {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: $height;
+}
+
+@mixin vertical-horizontal-alignment {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  margin: 0 auto;
+}
+
+@mixin vertical-parent-alignment ($half-height) {
+  position: relative;
+  top: $half-height;
+}
+
+@mixin javascript-border {
+  border: 5px solid $main-yellow;
+}
+
+
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+
+
+
+//ELEMENT STYLING
+
+html {
+  font-family: $main-font-face;
+  font-weight: 400;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+header {
+  @include section-position(10vh);
+  top: 0;
+  background-color: $main-yellow;
+  .logo {
+    height: 100%;
+    padding-left: 10%;
+    img {
+      float: left;
+      height: 100%;
+    }
+  }
+}
+
+main {
+  @include section-position (90vh);
+  top: 10vh;
+  background: url('images/main.jpg') no-repeat;
+  .parent-container {
+    @include vertical-parent-alignment (45vh);
+    .main-text-container {
+      @include vertical-horizontal-alignment;
+      font-family: $header-font-face;
+      color: white;
+      text-align: center;
+      h1 {
+        margin: 0;
+        font-size: 15rem;
+        @media screen and (max-width: $smartphone-screen) {
+          font-size: 7rem;
+        }
+      }
+      h2 {
+        margin: 0;
+        font-size: 5rem;
+      }
+    }
+  }
+}
+
+.columns {
+  @include section-position ($section-height);
+  background-color: $light-yellow;
+  top: 100vh;
+  font-size: 3rem;
+  .parent-container{
+    @include vertical-parent-alignment (50vh);
+    .column-container {
+      @include vertical-horizontal-alignment;
+      width: 50%;
+      .column {
+        width: 45%;
+        &:first-child {
+          float: left;
+          @media screen and (max-width: $tablet-screen) {
+            clear: both;
+            width: 100%;
+            font-size: 1.5rem;
+          }
+        }
+        &:last-child {
+          float: right;
+          img {
+            position: absolute;
+            display: block;
+            bottom: 0;
+          }
+          @media screen and (max-width: $tablet-screen) {
+            clear: both;
+            width: 100%;
+            font-size: 1.5rem;
+            img {
+              position: relative;
+              margin: 3% auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.javascript {
+  @include section-position (200vh);
+  @media screen and (max-width: $tablet-screen) {
+    @include section-position (300vh);
+  }
+  @media screen and (max-width: $smartphone-screen) {
+    @include section-position (400vh);
+  }
+  background-color: $mid-yellow;
+  top: 200vh;
+  .parent-container {
+    @include vertical-parent-alignment (100vh);
+    @media screen and (max-width: $tablet-screen) {
+      @include vertical-parent-alignment (150vh);
+    }
+    @media screen and (max-width: $smartphone-screen) {
+      @include vertical-parent-alignment (200vh);
+    }
+    .javascript-container {
+      @include vertical-horizontal-alignment;
+      width: 80%;
+      .row-container{
+        padding: 3% 0;
+        .row {
+          margin: 0 auto;
+          width: 45%;
+          img {
+            float: left;
+            @include javascript-border;
+            border-radius: 2%;
+          }
+          p {
+            float: left;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 2%;
+            width: 35%;
+            font-size: 2rem;
+            @media screen and (max-width: $tablet-screen) {
+              font-size: 2rem;
+            }
+            @media screen and (max-width: 870px) {
+              clear: left;
+              width: 100%;
+              font-size: 1.5rem;
+            }
+          }
+          .javascript-row-button {
+            float: right;
+            @media screen and (max-width: 870px) {
+              float: none;
+            }
+            background-color: white;
+            @include javascript-border;
+            color: $orange;
+            font-weight: 700;
+            font-size: 2rem;
+          }
+        }
+        &:nth-child(4) {
+          display: none;
+        }
+        &:nth-child(5) {
+          display: none;
+        }
+      }
+      .load-more-container {
+        text-align: center;
+        #load-more-button {
+          @include javascript-border;
+          margin-top: 5%;
+          background-color: white;
+          color: $orange;
+          font-weight: 700;
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
+
+.custom {
+  @include section-position ($section-height);
+  top: 400vh;
+  @media screen and (max-width: $tablet-screen) {
+    top: 500vh;
+  }
+  @media screen and (max-width: $smartphone-screen) {
+    top: 600vh;
+  }
+  .parent-container {
+    @include vertical-parent-alignment (50vh);
+    .custom-container {
+      @include vertical-horizontal-alignment;
+      .custom-image {
+        display: none;
+        margin: 0 auto;
+        text-align: center;
+        img {
+          margin: 0 auto;
+          @include javascript-border;
+          border-radius: 5px;
+          width: 50%;
+          text-align: center;
+        }
+        &:first-child {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  @include section-position (10vh);
+  background-color: $main-yellow;
+  top: 500vh;
+  @media screen and (max-width: $tablet-screen) {
+    top: 600vh;
+  }
+  @media screen and (max-width: $smartphone-screen) {
+    top: 700vh;
+  }
+  bottom: 0;
+}

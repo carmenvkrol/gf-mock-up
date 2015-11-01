@@ -51,6 +51,6 @@ $ sass style.scss:style.css
 ```
 
 
-Screenshots
+Screenshot
 ------------
 ![](https://github.com/carmenvkrol/gf-mock-up/blob/master/gf-mock-up-screenshot.png)
